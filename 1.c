@@ -27,7 +27,7 @@ int _printf(const char *format, ...)
 		{"%s", string_f}, {"%c", character_f}, {"%p", pointer_f},
 		{"%x", hex_f}, {"%X", HEX_f}, {"%%", persand},
 		{"%o", octal_f}, {"%b", binary_f}, {"%S", exclusive_str},
-		{"%r", rev}, {"%R", rot13}
+		{"%r", _rev}, {"%R", rot13}
 	};
 	int i = 0, j, sum = 0;
 	va_list arguments;
@@ -43,7 +43,7 @@ x:
 			if (Specifiers[j].specifier[0] == format[i] &&
 					Specifiers[j].specifier[1] == format[i + 1])
 			{
-				sum += Specifiers[j].function(argument);
+				sum += Specifiers[j].function(arguments);
 				i += 2;
 				goto x;
 			}
@@ -51,7 +51,7 @@ x:
 		sum++;
 		i++;
 	}
-	va_end(args);
+	va_end(arguments);
 	return (sum);
 }
 /**
@@ -126,16 +126,17 @@ int string_f(va_list val)
 	if (str == NULL)
 	{
 		str = "(null)";
-		len = _strlen(str);
+		sum = _strlen(str);
 		for (i = 0; i < sum; i++)
 			_putchar(str[i]);
 		return (sum);
 	}
 	else
 	{
-		sum = _strlen(s);
+		sum = _strlen(str);
 		for (i = 0; i < sum; i++)
-			_putchar(sum[i]);
+			_putchar(str[i]);
 		return (sum);
 	}
 }
+
