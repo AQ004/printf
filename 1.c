@@ -23,11 +23,11 @@ int _putchar(char c)
 int _printf(const char *format, ...)
 {
 	specifier_t Specifiers[] = {
-		{"%d", integer_f}, {"%i", integer_f}, {"%u", unsigned_f},
-		{"%s", string_f}, {"%c", character_f}, {"%p", pointer_f},
-		{"%x", hex_f}, {"%X", HEX_f}, {"%%", persand},
-		{"%o", octal_f}, {"%b", binary_f}, {"%S", exclusive_str},
-		{"%r", _rev}, {"%R", rot13}
+		{"%d", integer_f}, {"%i", integer_f},/* {"%u", unsigned_f},*/
+		{"%s", string_f}, {"%c", character_f}, /*{"%p", pointer_f},
+		{"%x", hex_f}, {"%X", HEX_f},*/ {"%%", persand},
+		/*{"%o", octal_f}, {"%b", binary_f}, {"%S", exclusive_str},
+		{"%r", _rev}, {"%R", rot13}*/
 	};
 	int i = 0, j, sum = 0;
 	va_list arguments;
